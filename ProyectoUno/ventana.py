@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         self.btnAceptar.setGeometry(QtCore.QRect(320, 170, 75, 23))
         self.btnAceptar.setObjectName("btnAceptar")
         self.etiquetaBtn = QtWidgets.QLabel(self.centralwidget)
-        self.etiquetaBtn.setGeometry(QtCore.QRect(320, 140, 71, 20))
+        self.etiquetaBtn.setGeometry(QtCore.QRect(320, 140, 200, 20))
         self.etiquetaBtn.setObjectName("etiquetaBtn")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
