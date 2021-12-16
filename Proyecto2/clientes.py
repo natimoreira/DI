@@ -1,6 +1,7 @@
 import var
 
 class Clientes():
+    '''Función para comprobar DNI'''
     def validarDNI():
         try:
             dni = var.ui.lineDNI.text()
@@ -26,3 +27,16 @@ class Clientes():
                 var.ui.labelValido.setText('X')
         except Exception as error:
             print('Error en módulo validar DNI', error)
+
+    '''Función para cargar provincias'''
+    def cargarProv():
+        '''
+        Esta solución es provisional, en su momento lo haremos de otra forma
+        cargando los registros desde una base de datos
+        '''
+        try:
+            prov = ['', 'A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
+            for i in prov:
+                var.ui.comboProv.addItems(i)
+        except Exception as error:
+            print('Error: %s ' % str(error))
