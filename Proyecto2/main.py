@@ -9,6 +9,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
+        var.ui.btnSalir.clicked.connect(events.Eventos.SalirModal)
         '''
         Eventos cada de texto
         '''
