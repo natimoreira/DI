@@ -15,9 +15,9 @@ class Ui_venCalendar(object):
     def setupUi(self, venCalendar):
         venCalendar.setObjectName("venCalendar")
         venCalendar.resize(334, 210)
-        self.calendarWidget = QtWidgets.QCalendarWidget(venCalendar)
-        self.calendarWidget.setGeometry(QtCore.QRect(10, 10, 312, 183))
-        self.calendarWidget.setObjectName("calendarWidget")
+        self.calendar = QtWidgets.QCalendarWidget(venCalendar)
+        self.calendar.setGeometry(QtCore.QRect(10, 10, 312, 183))
+        self.calendar.setObjectName("calendar")
 
         self.retranslateUi(venCalendar)
         QtCore.QMetaObject.connectSlotsByName(venCalendar)

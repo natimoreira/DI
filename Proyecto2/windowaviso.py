@@ -33,8 +33,7 @@ class Ui_Dialog(object):
         self.btnBox.setGeometry(QtCore.QRect(130, 180, 156, 23))
         self.btnBox.setStandardButtons(QtWidgets.QDialogButtonBox.No|QtWidgets.QDialogButtonBox.Yes)
         self.btnBox.setObjectName("btnBox")
-        self.btnBox.accepted.connect(Dialog.accept)
-        self.btnBox.rejected.connect(Dialog.reject)
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 

@@ -40,3 +40,23 @@ class Clientes():
                 var.ui.comboProv.addItems(i)
         except Exception as error:
             print('Error: %s ' % str(error))
+
+    '''
+    Abrir la ventana calendario
+    '''
+    def abrirCalendar():
+        try:
+            var.dlgcalendar.show()
+        except Exception as error:
+            print('Error: %s ' % str(error))
+
+    '''
+    Este módulo se ejecuta cuando clickamos en un día del calendario
+    '''
+    def cargarFecha(qDate):
+        try:
+            data = ('{0}/{1}/{2}'.format(qDate.day(), qDate.month(), qDate.year()))
+            var.ui.lineFecha.setText(str(data))
+            var.dlgcalendar.hide()
+        except Exception as error:
+            print('Error al cargar fecha: %s ' % str(error))

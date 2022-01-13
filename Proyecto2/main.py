@@ -1,6 +1,8 @@
 from windowaviso import *
 from ventana import *
+from venCalendar import *
 import sys, var, events, clientes
+from datetime import *
 
 class Main(QtWidgets.QMainWindow):
 
@@ -44,6 +46,11 @@ class Main(QtWidgets.QMainWindow):
         clientes.Clientes.cargarProv()
         var.ui.comboProv.activated[str].connect(events.Eventos.selProv)
 
+        '''
+        Evento calendario
+        '''
+        var.ui.btnCalendario.clicked.connect(clientes.Clientes.abrirCalendar)
+
 
 class DialogSalir(QtWidgets.QDialog):
     def __init__(self):
@@ -57,9 +64,22 @@ class DialogSalir(QtWidgets.QDialog):
         var.dlgsalir.btnBox.accepted.rejected(self.reject)'''
 
 
+class DialogCalendar(QtWidgets.QDialog):
+    def __init__(self):
+        super(DialogCalendar, self).__init__()
+        var.dlgcalendar = Ui_venCalendar()
+        var.dlgcalendar.setupUi(self)
+        diaActual = datetime.now().day
+        mesActual = datetime.now().month
+        anoActual = datetime.now().year
+        var.dlgcalendar.calendar.setSelectedDate((QtCore.QDate(anoActual, mesActual, diaActual)))
+        var.dlgcalendar.calendar.clicked.connect(clientes.Clientes.cargarFecha)
+
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     window = Main()
     var.dlgsalir = DialogSalir()
+    var.dlgcalendar = DialogCalendar()
     window.show()
     sys.exit(app.exec())
