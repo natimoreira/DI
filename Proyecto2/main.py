@@ -16,15 +16,18 @@ class Main(QtWidgets.QMainWindow):
         '''Salir botones'''
         var.ui.btnSalir.clicked.connect(events.Eventos.SalirModal)
 
+        '''Botón aceptar'''
+        var.ui.btnAceptar.clicked.connect(clientes.Clientes.showClients)
+
         '''Botones radio sexo'''
         var.radioSexo = (var.ui.radioFem, var.ui.radioMas)
         for i in var.radioSexo:
-            i.toggled.connect(events.Eventos.selSexo)
+            i.toggled.connect(clientes.Clientes.selSexo)
 
         '''Checbox pago'''
         var.checkPago = (var.ui.checkEfectivo, var.ui.checkTarjeta, var.ui.checkTransf)
         for i in var.checkPago:
-            i.stateChanged.connect(events.Eventos.selPago)
+            i.stateChanged.connect(clientes.Clientes.selPago)
 
         '''Lista provincias'''
 
@@ -37,14 +40,14 @@ class Main(QtWidgets.QMainWindow):
         '''
         Eventos de botón
         '''
-        var.ui.botonesRadio.buttonClicked.connect(events.Eventos.selSexo)
-        var.ui.botonesCheck.buttonClicked.connect(events.Eventos.selPago)
+        var.ui.botonesRadio.buttonClicked.connect(clientes.Clientes.selSexo)
+        var.ui.botonesCheck.buttonClicked.connect(clientes.Clientes.selPago)
 
         '''
         Eventos de lista
         '''
         clientes.Clientes.cargarProv()
-        var.ui.comboProv.activated[str].connect(events.Eventos.selProv)
+        var.ui.comboProv.activated[str].connect(clientes.Clientes.selProv)
 
         '''
         Evento calendario
@@ -60,6 +63,7 @@ class DialogSalir(QtWidgets.QDialog):
         super(DialogSalir, self).__init__()
         var.dlgsalir = Ui_Dialog()
         var.dlgsalir.setupUi(self)
+
         '''var.dlgsalir.btnBox.accepted.connect(self.accept)
         var.dlgsalir.btnBox.accepted.rejected(self.reject)'''
 
