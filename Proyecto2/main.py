@@ -29,9 +29,6 @@ class Main(QtWidgets.QMainWindow):
         for i in var.checkPago:
             i.stateChanged.connect(clientes.Clientes.selPago)
 
-        '''Lista provincias'''
-
-
         '''
         Eventos de texto
         '''
