@@ -1,6 +1,8 @@
-from PyQt5.uic.properties import QtWidgets
+#from PyQt5.uic.properties import QtWidgets
+from PyQt5 import QtWidgets, QtSql
 
 import var
+import conexion
 
 class Clientes():
     '''Función para comprobar DNI'''
@@ -81,7 +83,8 @@ class Clientes():
 
     def selPago(self):
         try:
-            if var.ui.checkEfectivo.isChecked():
+            var.pay = []
+            '''if var.ui.checkEfectivo.isChecked():
                 # print('Paga en efectivo')
                 var.pay.append('Efectivo')
             if var.ui.checkTarjeta.isChecked():
@@ -89,7 +92,18 @@ class Clientes():
                 var.pay.append('Tarjeta')
             if var.ui.checkTransf.isChecked():
                 # print('Paga con transferencia')
-                var.pay.append('Transferencia')
+                var.pay.append('Transferencia')'''
+            for i, data in enumerate(var.ui.botonesCheck.buttons()):
+                # agrupamos en QtDesigner los checkbox en un ButtonGroup
+                if data.isChecked() and i == 0:
+                    var.pay.append('Efectivo')
+                if data.isChecked() and i == 1:
+                    var.pay.append('Tarjeta')
+                if data.isChecked() and i == 2:
+                    var.pay.append('Transferencia')
+            #var.pay = set(var.pay)
+            print(var.pay)
+            return var.pay
         except Exception as error:
             print('Error: %s ' % str(error))
 
@@ -122,20 +136,30 @@ class Clientes():
                     clitab.append(i.text())
                     k += 1
             newcli.append(vpro)
+            var.pay2 = Clientes.selPago()
             #elimina duplicados
-            var.pay = set(var.pay)
+            '''var.pay = set(var.pay)
             for j in var.pay:
-                newcli.append(j)
+                newcli.append(j)'''
             newcli.append(sex)
+            newcli.append(var.pay2)
             print(newcli)
             print(clitab)
-            row = 0  #posición de la fila, problema: coloca al último como primero en cada click
-            column = 0  #posición de la columna
-            var.ui.tablaValores.insertRow(row)  #insertamos una fila nueva con cada click de botón
-            for registro in clitab:
-                #la celda tiene una posición fila, columna y cargamos en ella el dato
-                cell = QtWidgets.QTableWidgetItem(registro)  #carga en cell cada dato de la lista
-                var.ui.tablaValores.setItem(row, column, cell)  #lo escribe
-                column += 1
+            if client:
+            #comprobamos que no esté vacío lo principal
+            #aquí empieza como trabajar con la TableWidget
+                row = 0  #posición de la fila, problema: coloca al último como primero en cada click
+                column = 0  #posición de la columna
+                var.ui.tablaValores.insertRow(row)  #insertamos una fila nueva con cada click de botón
+                for registro in clitab:
+                    #la celda tiene una posición fila, columna y cargamos en ella el dato
+                    cell = QtWidgets.QTableWidgetItem(registro)  #carga en cell cada dato de la lista
+                    var.ui.tablaValores.setItem(row, column, cell)  #lo escribe
+                    column += 1
+
+                conexion.Conexion.cargarCli(newcli)
+            else:
+                print('Faltan datos')
+            Clientes.limpiarCli(client, var.rbtsex, var.chkpago)
         except Exception as error:
             print('Error: %s ' % str(error))

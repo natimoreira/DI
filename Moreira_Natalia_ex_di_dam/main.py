@@ -1,4 +1,3 @@
-import conexion
 from windowaviso import *
 from ventana import *
 from venCalendar import *
@@ -6,55 +5,34 @@ import sys, var, events, clientes
 from datetime import *
 
 class Main(QtWidgets.QMainWindow):
-
     def __init__(self):
         super(Main, self).__init__()
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
+
         '''Salir menú'''
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
 
         '''Salir botones'''
         var.ui.btnSalir.clicked.connect(events.Eventos.SalirModal)
 
-        '''Botón aceptar'''
-        var.ui.btnAceptar.clicked.connect(clientes.Clientes.showClients)
 
-        '''Botones radio sexo'''
-        var.radioSexo = (var.ui.radioFem, var.ui.radioMas)
-        for i in var.radioSexo:
-            i.toggled.connect(clientes.Clientes.selSexo)
 
-        '''Checbox pago'''
-        var.checkPago = (var.ui.checkEfectivo, var.ui.checkTarjeta, var.ui.checkTransf)
-        for i in var.checkPago:
-            i.stateChanged.connect(clientes.Clientes.selPago)
-
-        '''
-        Eventos de texto
-        '''
+        '''Validar dni'''
         var.ui.lineDNI.editingFinished.connect(clientes.Clientes.validarDNI)
+
+        '''Evento calendario'''
+        var.ui.btnCalendario.clicked.connect(clientes.Clientes.abrirCalendar)
 
         '''
         Eventos de botón
         '''
-        var.ui.botonesRadio.buttonClicked.connect(clientes.Clientes.selSexo)
-        var.ui.botonesCheck.buttonClicked.connect(clientes.Clientes.selPago)
+        var.ui.botonesRadio.buttonClicked.connect(clientes.Clientes.selOperacion)
 
-        '''
-        Eventos de lista
-        '''
-        clientes.Clientes.cargarProv()
-        var.ui.comboProv.activated[str].connect(clientes.Clientes.selProv)
-
-        '''
-        Evento calendario
-        '''
-        var.ui.btnCalendario.clicked.connect(clientes.Clientes.abrirCalendar)
-
-        ''' Conexión Base de datos '''
-        conexion.Conexion.db_connect(var.filebd)
-
+        '''Botones radio'''
+        var.radioOperacion = (var.ui.radioRet, var.ui.radioIng)
+        for i in var.radioOperacion:
+            i.toggled.connect(clientes.Clientes.selOperacion)
 
 class DialogSalir(QtWidgets.QDialog):
     def __init__(self):
@@ -64,10 +42,6 @@ class DialogSalir(QtWidgets.QDialog):
         super(DialogSalir, self).__init__()
         var.dlgsalir = Ui_Dialog()
         var.dlgsalir.setupUi(self)
-
-        '''var.dlgsalir.btnBox.accepted.connect(self.accept)
-        var.dlgsalir.btnBox.accepted.rejected(self.reject)'''
-
 
 class DialogCalendar(QtWidgets.QDialog):
     def __init__(self):
@@ -79,7 +53,6 @@ class DialogCalendar(QtWidgets.QDialog):
         anoActual = datetime.now().year
         var.dlgcalendar.calendar.setSelectedDate((QtCore.QDate(anoActual, mesActual, diaActual)))
         var.dlgcalendar.calendar.clicked.connect(clientes.Clientes.cargarFecha)
-
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
