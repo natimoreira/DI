@@ -163,3 +163,30 @@ class Clientes():
             Clientes.limpiarCli(client, var.rbtsex, var.chkpago)
         except Exception as error:
             print('Error: %s ' % str(error))
+
+    '''Módulo para dar de baja un cliente'''
+    def bajaCliente(self):
+        try:
+            dni = var.ui.lineDNI.text()
+            conexion.Conexion.bajaCli(dni)
+            conexion.Conexion.mostrarClientes(self)
+            Clientes.limpiarCli()
+        except Exception as error:
+            print('Error cargar clientes: %s ' % str(error))
+
+    '''Módulo para modificar datos de un cliente'''
+    def modifCliente(self):
+        try:
+            newdata = []
+            client = [var.ui.lineDNI, var.ui.lineApellido, var.ui.lineNombre, var.ui.lineFecha, var.ui.lineDir]
+            for i in client:
+                newdata.append(i.text()) # cargamos los valores que hay en los editline
+            newdata.append(var.ui.comboProv.currentText())
+            newdata.append(var.sex)
+            var.pay = Clientes.selPago()
+            print(var.pay)
+            cod = var.ui.lblcodigo.text()
+            conexion.Conexion.modifCli(cod, newdata)
+            conexion.Conexion.mostrarClientes(self)
+        except Exception as error:
+            print('Error cargar clientes: %s ' % str(error))

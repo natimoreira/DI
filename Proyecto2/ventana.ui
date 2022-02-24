@@ -965,7 +965,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="botonesRadio"/>
   <buttongroup name="botonesCheck"/>
+  <buttongroup name="botonesRadio"/>
  </buttongroups>
 </ui>

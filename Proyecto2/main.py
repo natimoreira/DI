@@ -54,6 +54,7 @@ class Main(QtWidgets.QMainWindow):
 
         ''' Conexión Base de datos '''
         conexion.Conexion.db_connect(var.filebd)
+        conexion.Conexion.mostrarClientes(self)
 
 
 class DialogSalir(QtWidgets.QDialog):
