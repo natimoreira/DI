@@ -81,7 +81,7 @@ class Clientes():
 
     '''Función para seleccionar pago'''
 
-    def selPago(self):
+    def selPago():
         try:
             var.pay = []
             '''if var.ui.checkEfectivo.isChecked():
@@ -108,7 +108,6 @@ class Clientes():
             print('Error: %s ' % str(error))
 
     '''Función para seleccionar provincia'''
-
     def selProv(prov):
         try:
             global vpro
@@ -190,3 +189,16 @@ class Clientes():
             conexion.Conexion.mostrarClientes(self)
         except Exception as error:
             print('Error cargar clientes: %s ' % str(error))
+
+
+    '''Módulo para restaurar formulario'''
+    def limpiarCli(self):
+        var.ui.lineDNI.setText("")
+        var.ui.lineFecha.setText("")
+        var.ui.lineApellido.setText("")
+        var.ui.lineNombre.setText("")
+        var.ui.lineDir.setText("")
+        var.ui.labelValido.setText("")
+        var.ui.comboProv.setCurrentIndex(0)
+        var.ui.botonesRadio.set(0)
+

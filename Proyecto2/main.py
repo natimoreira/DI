@@ -11,14 +11,28 @@ class Main(QtWidgets.QMainWindow):
         super(Main, self).__init__()
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
+
+        ''' Conexión Base de datos '''
+        conexion.Conexion.db_connect(var.filebd)
+        conexion.Conexion.mostrarClientes(self)
+
         '''Salir menú'''
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
 
-        '''Salir botones'''
+        '''Salir boton'''
         var.ui.btnSalir.clicked.connect(events.Eventos.SalirModal)
 
-        '''Botón aceptar'''
+        '''Botón aceptar (se cambió por Grabar)'''
         var.ui.btnAceptar.clicked.connect(clientes.Clientes.showClients)
+
+        '''Botones eliminar, modificar y limpiar'''
+        var.ui.btnEliminar.clicked.connect(clientes.Clientes.bajaCliente)
+        var.ui.btnModificar.clicked.connect(clientes.Clientes.modifCliente)
+        var.ui.btnLimpiar.clicked.connect(clientes.Clientes.limpiarCli)
+
+        '''Botones de arriba Buscar y Refrescar'''
+        #var.ui.btnReiniciar.clicked.connect(clientes.Clientes.limpiarCli)
+        var.ui.btnReiniciar.clicked.connect(conexion.Conexion.mostrarClientes)
 
         '''Botones radio sexo'''
         var.radioSexo = (var.ui.radioFem, var.ui.radioMas)
@@ -41,6 +55,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.botonesRadio.buttonClicked.connect(clientes.Clientes.selSexo)
         var.ui.botonesCheck.buttonClicked.connect(clientes.Clientes.selPago)
 
+
         '''
         Eventos de lista
         '''
@@ -51,10 +66,6 @@ class Main(QtWidgets.QMainWindow):
         Evento calendario
         '''
         var.ui.btnCalendario.clicked.connect(clientes.Clientes.abrirCalendar)
-
-        ''' Conexión Base de datos '''
-        conexion.Conexion.db_connect(var.filebd)
-        conexion.Conexion.mostrarClientes(self)
 
 
 class DialogSalir(QtWidgets.QDialog):
