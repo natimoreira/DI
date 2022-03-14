@@ -159,7 +159,7 @@ class Clientes():
                 conexion.Conexion.cargarCli(newcli)
             else:
                 print('Faltan datos')
-            Clientes.limpiarCli(client, var.rbtsex, var.chkpago)
+            Clientes.limpiarCli(client, var.botonesRadio, var.botonesCheck)
         except Exception as error:
             print('Error: %s ' % str(error))
 

@@ -55,7 +55,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.botonesRadio.buttonClicked.connect(clientes.Clientes.selSexo)
         var.ui.botonesCheck.buttonClicked.connect(clientes.Clientes.selPago)
 
-
         '''
         Eventos de lista
         '''

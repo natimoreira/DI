@@ -20,7 +20,7 @@ class Conexion():
     Módulo para cargar clientes en la BD
     '''
     def cargarCli(cliente):
-        query = QtSql.QSqlQery()
+        query = QtSql.QSqlQuery()
         query.prepare('insert into clientes (dni, apellidos, nombre, fechalta, direccion, provincia, sexo, formapago)'
                       'values (:dni, :apellido, :nombre, :fechalta, :direccion, :provincia, :sexo, :formapago)')
         query.bindValue(':dni', str(cliente[0]))
@@ -66,7 +66,7 @@ class Conexion():
         query.bindValue(':dni', dni)
         if query.exec_():
             print('Baja cliente')
-            var.ui.lblstatus.setText('Cliente con dni ' + dni + ' dado de baja')
+            #var.ui.lblstatus.setText('Cliente con dni ' + dni + ' dado de baja')
         else:
             print("Error mostrar clientes: ", query.lastError().text())
 
@@ -88,6 +88,6 @@ class Conexion():
         query.bindValue(':formaspago', str(newdata[7]))
         if query.exec_():
             print('Cliente modificado')
-            var.ui.lblstatus.setText('Cliente con dni ' + str(newdata[0]) + ' modificado')
+            #var.ui.lblstatus.setText('Cliente con dni ' + str(newdata[0]) + ' modificado')
         else:
             print("Error modificar cliente: ", query.lastError().text())
