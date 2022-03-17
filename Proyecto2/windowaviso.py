@@ -34,6 +34,9 @@ class Ui_Dialog(object):
         self.btnBox.setStandardButtons(QtWidgets.QDialogButtonBox.No|QtWidgets.QDialogButtonBox.Yes)
         self.btnBox.setObjectName("btnBox")
 
+        self.btnBox.accepted.connect(Dialog.accept)  # type: ignore
+        self.btnBox.rejected.connect(Dialog.reject)  # type: ignore
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 

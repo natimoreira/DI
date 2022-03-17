@@ -22,7 +22,7 @@ class Conexion():
     def cargarCli(cliente):
         query = QtSql.QSqlQuery()
         query.prepare('insert into clientes (dni, apellidos, nombre, fechalta, direccion, provincia, sexo, formapago)'
-                      'values (:dni, :apellido, :nombre, :fechalta, :direccion, :provincia, :sexo, :formapago)')
+                      'values (:dni, :apellidos, :nombre, :fechalta, :direccion, :provincia, :sexo, :formapago)')
         query.bindValue(':dni', str(cliente[0]))
         query.bindValue(':apellidos', str(cliente[1]))
         query.bindValue(':nombre', str(cliente[2]))
@@ -66,19 +66,20 @@ class Conexion():
         query.bindValue(':dni', dni)
         if query.exec_():
             print('Baja cliente')
-            #var.ui.lblstatus.setText('Cliente con dni ' + dni + ' dado de baja')
+            var.ui.labelEstado.setText('Cliente con dni ' + dni + ' dado de baja')
         else:
             print("Error mostrar clientes: ", query.lastError().text())
 
     '''Módulo para modificar cliente se llama desde fichero clientes.py'''
-    def modifCli(codigo, newdata):
+    def modifCli(newdata):
         query = QtSql.QSqlQuery()
-        codigo = int(codigo)
-        query.prepare('update clientes set dni=:dni, apellidos=:apellidos, nombre=:nombre,'
+        #codigo = int(codigo)
+        dni = newdata[0]
+        query.prepare('update clientes set apellidos=:apellidos, nombre=:nombre,'
                       'fechalta=:fechalta, direccion=:direccion, provincia=:provincia'
-                      'sexo=:sexo, formaspago=:formaspago where codigo=:codigo')
-        query.bindValue(':codigo', int(codigo))
-        query.bindValue(':dni', str(newdata[0]))
+                      'sexo=:sexo, formaspago=:formaspago where dni=:dni')
+        #query.bindValue(':codigo', int(codigo))
+        query.bindValue(':dni', str(dni))
         query.bindValue(':apellidos', str(newdata[1]))
         query.bindValue(':nombre', str(newdata[2]))
         query.bindValue(':fechalta', str(newdata[3]))
@@ -88,6 +89,6 @@ class Conexion():
         query.bindValue(':formaspago', str(newdata[7]))
         if query.exec_():
             print('Cliente modificado')
-            #var.ui.lblstatus.setText('Cliente con dni ' + str(newdata[0]) + ' modificado')
+            var.ui.labelEstado.setText('Cliente con dni ' + str(newdata[0]) + ' modificado')
         else:
             print("Error modificar cliente: ", query.lastError().text())

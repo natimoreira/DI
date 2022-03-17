@@ -41,7 +41,7 @@ class Clientes():
         try:
             prov = ['', 'A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
             for i in prov:
-                var.ui.comboProv.addItems(i)
+                var.ui.comboProv.addItem(i)
         except Exception as error:
             print('Error: %s ' % str(error))
 
@@ -119,8 +119,10 @@ class Clientes():
 
     '''
     Módulo para mostrar los datos introducidos
+    
+    NOTA: Modifiqué este módulo para dar de alta cliente
     '''
-    def showClients():
+    def showClients(self):
         try:
             #Preparamos el registro
             newcli = []
@@ -157,9 +159,10 @@ class Clientes():
                     column += 1
 
                 conexion.Conexion.cargarCli(newcli)
+                #conexion.Conexion.mostrarClientes(self)
             else:
                 print('Faltan datos')
-            Clientes.limpiarCli(client, var.botonesRadio, var.botonesCheck)
+            Clientes.limpiarCli(self)
         except Exception as error:
             print('Error: %s ' % str(error))
 
@@ -181,11 +184,12 @@ class Clientes():
             for i in client:
                 newdata.append(i.text()) # cargamos los valores que hay en los editline
             newdata.append(var.ui.comboProv.currentText())
-            newdata.append(var.sex)
+            newdata.append(sex)
             var.pay = Clientes.selPago()
-            print(var.pay)
-            cod = var.ui.lblcodigo.text()
-            conexion.Conexion.modifCli(cod, newdata)
+            newdata.append(var.pay)
+            #print(var.pay)
+            #cod = var.ui.lineDNI.text()
+            conexion.Conexion.modifCli(newdata)
             conexion.Conexion.mostrarClientes(self)
         except Exception as error:
             print('Error cargar clientes: %s ' % str(error))
@@ -200,5 +204,10 @@ class Clientes():
         var.ui.lineDir.setText("")
         var.ui.labelValido.setText("")
         var.ui.comboProv.setCurrentIndex(0)
-        var.ui.botonesRadio.set(0)
+        #var.ui.botonesRadio.set(0)
+        var.ui.botonesRadio.setExclusive(False)
+        var.ui.radioFem.setChecked(False)
+        var.ui.radioMas.setChecked(False)
+        var.ui.botonesRadio.setExclusive(True)
+        #var.ui.botonesCheck.setChecked(False)
 

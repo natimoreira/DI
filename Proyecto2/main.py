@@ -19,9 +19,6 @@ class Main(QtWidgets.QMainWindow):
         '''Salir menú'''
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
 
-        '''Salir boton'''
-        var.ui.btnSalir.clicked.connect(events.Eventos.SalirModal)
-
         '''Botón aceptar (se cambió por Grabar)'''
         var.ui.btnAceptar.clicked.connect(clientes.Clientes.showClients)
 
@@ -31,7 +28,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnLimpiar.clicked.connect(clientes.Clientes.limpiarCli)
 
         '''Botones de arriba Buscar y Refrescar'''
-        #var.ui.btnReiniciar.clicked.connect(clientes.Clientes.limpiarCli)
         var.ui.btnReiniciar.clicked.connect(conexion.Conexion.mostrarClientes)
 
         '''Botones radio sexo'''
@@ -58,7 +54,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         Eventos de lista
         '''
-        clientes.Clientes.cargarProv()
+        #clientes.Clientes.cargarProv()
         var.ui.comboProv.activated[str].connect(clientes.Clientes.selProv)
 
         '''
@@ -75,6 +71,8 @@ class DialogSalir(QtWidgets.QDialog):
         super(DialogSalir, self).__init__()
         var.dlgsalir = Ui_Dialog()
         var.dlgsalir.setupUi(self)
+        '''Salir boton'''
+        var.ui.btnSalir.clicked.connect(events.Eventos.SalirModal)
 
         '''var.dlgsalir.btnBox.accepted.connect(self.accept)
         var.dlgsalir.btnBox.accepted.rejected(self.reject)'''
