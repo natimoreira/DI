@@ -19,6 +19,9 @@ class Main(QtWidgets.QMainWindow):
         '''Salir menú'''
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
 
+        '''Salir toolbar'''
+        var.ui.actiontoolbarSalir.triggered.connect(events.Eventos.Salir)
+
         '''Botón aceptar (se cambió por Grabar)'''
         var.ui.btnAceptar.clicked.connect(clientes.Clientes.showClients)
 
@@ -62,6 +65,10 @@ class Main(QtWidgets.QMainWindow):
         Evento calendario
         '''
         var.ui.btnCalendario.clicked.connect(clientes.Clientes.abrirCalendar)
+
+        ''' Barra de estado '''
+        var.ui.statusbar.addPermanentWidget(var.ui.labelEstado, 1)
+        var.ui.labelEstado.setText('Bienvenido')
 
 
 class DialogSalir(QtWidgets.QDialog):

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>707</width>
-    <height>688</height>
+    <height>735</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1906,6 +1906,38 @@
        <string/>
       </property>
      </widget>
+     <widget class="QSpinBox" name="spinBoxEnvio">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>270</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>3</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelEdad">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>270</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Forma de envío</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabFacturacion">
      <attribute name="title">
@@ -1940,6 +1972,18 @@
    <addaction name="menuArchivo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>true</bool>
+   </attribute>
+   <addaction name="actiontoolbarSalir"/>
+  </widget>
   <action name="actionSalir">
    <property name="text">
     <string>Salir</string>
@@ -1948,8 +1992,25 @@
     <string>Alt+4</string>
    </property>
   </action>
+  <action name="actiontoolbarSalir">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/iconsalir.png</normaloff>img/iconsalir.png</iconset>
+   </property>
+   <property name="text">
+    <string>toolbarSalir</string>
+   </property>
+   <property name="iconText">
+    <string>toolbarSalir</string>
+   </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>false</bool>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="toolbarSalir.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="botonesRadio"/>
