@@ -29,6 +29,7 @@ class Main(QtWidgets.QMainWindow):
 
         '''Botones de arriba Buscar y Refrescar'''
         var.ui.btnReiniciar.clicked.connect(conexion.Conexion.mostrarClientes)
+        var.ui.btnBuscar.clicked.connect(conexion.Conexion.buscarCli)
 
         '''Botones radio sexo'''
         var.radioSexo = (var.ui.radioFem, var.ui.radioMas)
