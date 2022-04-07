@@ -2,4 +2,10 @@
   <qresource prefix="newPrefix">
     <file>img/iconsalir.png</file>
   </qresource>
+  <qresource prefix="newPrefix">
+    <file>img/guardarZip.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>img/abrir.png</file>
+  </qresource>
 </RCC>

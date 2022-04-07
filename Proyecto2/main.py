@@ -16,11 +16,20 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.db_connect(var.filebd)
         conexion.Conexion.mostrarClientes(self)
 
+        '''Abrir menú'''
+        var.ui.actionAbrir.triggered.connect(events.Eventos.AbrirDir)
+
+        '''Abrir toolbar'''
+        var.ui.actiontoolbarAbrir.triggered.connect(events.Eventos.AbrirDir)
+
         '''Salir menú'''
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
 
         '''Salir toolbar'''
         var.ui.actiontoolbarSalir.triggered.connect(events.Eventos.Salir)
+
+        '''Guardar zip toolbar'''
+        var.ui.actiontoolbarGuardar.triggered.connect(events.Eventos.Backup)
 
         '''Botón aceptar (se cambió por Grabar)'''
         var.ui.btnAceptar.clicked.connect(clientes.Clientes.showClients)
@@ -71,6 +80,11 @@ class Main(QtWidgets.QMainWindow):
         var.ui.labelEstado.setText('Bienvenido')
 
 
+class FileDialogAbrir(QtWidgets.QFileDialog):
+    def __init__(self):
+        super(FileDialogAbrir, self).__init__()
+
+
 class DialogSalir(QtWidgets.QDialog):
     def __init__(self):
         '''
@@ -101,6 +115,7 @@ class DialogCalendar(QtWidgets.QDialog):
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     window = Main()
+    var.filedlgabrir = FileDialogAbrir()
     var.dlgsalir = DialogSalir()
     var.dlgcalendar = DialogCalendar()
     window.show()
