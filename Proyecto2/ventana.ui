@@ -1986,6 +1986,7 @@
    </attribute>
    <addaction name="actiontoolbarAbrir"/>
    <addaction name="actiontoolbarGuardar"/>
+   <addaction name="actiontoolbarInforme"/>
    <addaction name="separator"/>
    <addaction name="actiontoolbarSalir"/>
   </widget>
@@ -2003,7 +2004,7 @@
      <normaloff>img/iconsalir.png</normaloff>img/iconsalir.png</iconset>
    </property>
    <property name="text">
-    <string>toolbarSalir</string>
+    <string>Salir</string>
    </property>
    <property name="iconText">
     <string>toolbarSalir</string>
@@ -2026,7 +2027,7 @@
      <normaloff>img/abrir.png</normaloff>img/abrir.png</iconset>
    </property>
    <property name="text">
-    <string>toolbarAbrir</string>
+    <string>Abrir</string>
    </property>
   </action>
   <action name="actiontoolbarGuardar">
@@ -2035,7 +2036,16 @@
      <normaloff>img/guardarZip.png</normaloff>img/guardarZip.png</iconset>
    </property>
    <property name="text">
-    <string>toolbarGuardar</string>
+    <string>Exportar BD</string>
+   </property>
+  </action>
+  <action name="actiontoolbarInforme">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/pdf.png</normaloff>img/pdf.png</iconset>
+   </property>
+   <property name="text">
+    <string>Generar Informe</string>
    </property>
   </action>
  </widget>
@@ -2044,7 +2054,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="botonesCheck"/>
   <buttongroup name="botonesRadio"/>
+  <buttongroup name="botonesCheck"/>
  </buttongroups>
 </ui>

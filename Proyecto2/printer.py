@@ -30,7 +30,7 @@ class Printer():
 
     def cabecera(self):
         try:
-            logo = '.\\img\logo.jpg'
+            logo = '.\\img\logo.png'
             var.rep.setTitle('INFORMES')
             var.rep.setAuthor('Administración')
             var.rep.setFont('Helvetica', size=10)
@@ -78,9 +78,9 @@ class Printer():
             var.rep.drawString(465, 710, itemcli[4])
             var.rep.line(45, 703, 525, 703)
             query = QtSql.QSqlQuery()
-            query.prepare('select codigo, dni, apellidos, nombre, fechalta form clientes order by apellidos, nombre')
+            query.prepare('select codigo, dni, apellidos, nombre, fechalta from clientes order by apellidos, nombre')
             var.rep.setFont('Helvetica', size=10)
-            if query.exec_()
+            if query.exec_():
                 i = 50
                 j = 690
                 while query.next():

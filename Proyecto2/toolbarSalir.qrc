@@ -3,6 +3,9 @@
     <file>img/iconsalir.png</file>
   </qresource>
   <qresource prefix="newPrefix">
+    <file>img/pdf.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
     <file>img/guardarZip.png</file>
   </qresource>
   <qresource prefix="newPrefix">

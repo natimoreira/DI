@@ -1,4 +1,5 @@
 import conexion
+import printer
 from windowaviso import *
 from ventana import *
 from venCalendar import *
@@ -30,6 +31,9 @@ class Main(QtWidgets.QMainWindow):
 
         '''Guardar zip toolbar'''
         var.ui.actiontoolbarGuardar.triggered.connect(events.Eventos.Backup)
+
+        '''Generar informe'''
+        var.ui.actiontoolbarInforme.triggered.connect(printer.Printer.reportCli)
 
         '''Botón aceptar (se cambió por Grabar)'''
         var.ui.btnAceptar.clicked.connect(clientes.Clientes.showClients)
