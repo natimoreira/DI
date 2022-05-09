@@ -1,7 +1,7 @@
 import sys, var
 from PyQt5 import QtWidgets
 
-class eventos:
+class Eventos:
 
     '''Función para salir'''
     def Salir():
