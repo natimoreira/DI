@@ -47,6 +47,7 @@ class Contactos():
             nombre = var.ui.lineNombre.text()
             conexion.Conexion.borrarContacto(nombre)
             conexion.Conexion.mostrarContactos(self)
+            conexion.Conexion.mostrarContactos2(self)
             Contactos.limpiarContacto()
         except Exception as error:
             print('Error borrar contacto: %s ' % str(error))
@@ -61,6 +62,7 @@ class Contactos():
                 newdata.append(i.text())  # cargamos los valores que hay en los editline
             conexion.Conexion.modifContacto(newdata)
             conexion.Conexion.mostrarContactos(self)
+            conexion.Conexion.mostrarContactos2(self)
         except Exception as error:
             print('Error modificar contacto: %s ' % str(error))
 
