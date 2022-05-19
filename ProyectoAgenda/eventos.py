@@ -1,5 +1,6 @@
 import os
 import shutil
+import subprocess
 import sys, var
 import zipfile
 from datetime import *
@@ -43,3 +44,9 @@ class Eventos:
                 shutil.move(str(var.copia), str(directorio))
         except Exception as error:
             print('Error: %s' % str(error))
+
+
+    '''Función para abrir manual de usuario'''
+    def AbrirManual(self):
+        path = '.\\Manual\\Manual_usuario_Agenda.pdf'
+        subprocess.Popen([path], shell=True)

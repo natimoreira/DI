@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>img/agregar.png</file>
+    <file>img/borrar.png</file>
+    <file>img/buscar.png</file>
+    <file>img/guardarZip.png</file>
+    <file>img/iconsalir.png</file>
+    <file>img/limpiar.png</file>
+    <file>img/modificar.png</file>
+    <file>img/pdf.png</file>
+    <file>img/reiniciar.png</file>
+    <file>img/warning.png</file>
+  </qresource>
+</RCC>

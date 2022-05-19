@@ -4,7 +4,7 @@ import contactos
 import var
 
 class Conexion():
-
+    '''Conectamos la base de datos'''
     def db_connect(filename):
         db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
         db.setDatabaseName(filename)

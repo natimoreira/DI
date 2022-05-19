@@ -11,6 +11,7 @@ from reportlab.pdfgen import canvas
 import var
 
 class Printer():
+    '''Función para añadir cabecera en el informe'''
     def cabecera(self):
         try:
             #logo = '.\\img\logo.png'
@@ -31,6 +32,7 @@ class Printer():
         except Exception as error:
             print('Error en la cabecera: %s' % str(error))
 
+    '''Función para añadir pie de página en el informe'''
     def pie(textListado):
         try:
             var.rep.line(50, 50, 525, 50)
@@ -43,6 +45,7 @@ class Printer():
         except Exception as error:
             print('Error en el pie de informe: %s' % str(error))
 
+    '''Función para sacar el listado de contactos'''
     def reportContact():
         try:
             var.rep = canvas.Canvas('informes/listadoContactos.pdf', pagesize=A4)

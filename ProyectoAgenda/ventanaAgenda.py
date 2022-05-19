@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -1089,7 +1088,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Agenda"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Agenda 1.0"))
         self.labelApellido.setText(_translate("MainWindow", "Apellidos"))
         self.labelNombre.setText(_translate("MainWindow", "Nombre"))
         self.labelTfno.setText(_translate("MainWindow", "Teléfono"))
@@ -1132,3 +1131,4 @@ class Ui_MainWindow(object):
         self.actionExportar_Contactos.setText(_translate("MainWindow", "Exportar Contactos"))
         self.actionGenerar_Informe.setText(_translate("MainWindow", "Generar Informe"))
         self.actionManual_de_Usuario.setText(_translate("MainWindow", "Manual de Usuario"))
+

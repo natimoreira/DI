@@ -25,7 +25,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionSalir.triggered.connect(eventos.Eventos.Salir)
 
         '''Salir toolbar'''
-        #var.ui.actiontoolbarSalir.triggered.connect(eventos.Eventos.Salir)
         var.ui.actiontoolbarSalir.triggered.connect(eventos.Eventos.SalirModal)
 
         '''Exportar contactos toolbar'''
@@ -39,6 +38,9 @@ class Main(QtWidgets.QMainWindow):
 
         '''Generar informe menú'''
         var.ui.actionGenerar_Informe.triggered.connect(printer.Printer.reportContact)
+
+        '''Generar informe menú'''
+        var.ui.actionManual_de_Usuario.triggered.connect(eventos.Eventos.AbrirManual)
 
         '''Botones'''
         var.ui.btnAgregar.clicked.connect(contactos.Contactos.altaContacto)
@@ -64,6 +66,9 @@ class DialogSalir(QtWidgets.QDialog):
 
 
 class FileDialogAbrir(QtWidgets.QFileDialog):
+    '''
+    Clase que instancia diálogo de abrir
+    '''
     def __init__(self):
         super(FileDialogAbrir, self).__init__()
 
